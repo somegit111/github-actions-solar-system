@@ -11,9 +11,8 @@ env:
   MONGO_USERNAME: ${{ vars.MONGO_USERNAME }}
   MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 jobs:
-    other:
+    code-coverage:
         name: other
-        id: code-coverage
         runs-on: ubuntu-latest
         steps:
         - name: Checkout Repository
