@@ -12,7 +12,7 @@ env:
   MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 jobs:
     code-coverage:
-        name: other
+        name: Code coverage
         runs-on: ubuntu-latest
         steps:
         - name: Checkout Repository
@@ -27,7 +27,7 @@ jobs:
           run: npm install
 
         - name: Run Code-coverage
-          run: npm run code-coverage
+          run: npm run coverage
           continue-on-error: true
           
         - name: Code-Coverage-Result
