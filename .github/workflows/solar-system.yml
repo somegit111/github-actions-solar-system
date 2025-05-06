@@ -20,6 +20,8 @@ jobs:
       - uses: azure/setup-kubectl@v4
         with:
            version: 'v1.28.1' # default is latest stable
+      - name: test secret
+        run: echo "${{ secrets.KUBECONFIG }}"
       - uses: azure/k8s-set-context@v4
         with:
            method: kubeconfig
