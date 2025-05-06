@@ -11,6 +11,22 @@ env:
   MONGO_USERNAME: ${{ vars.MONGO_USERNAME }}
   MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 jobs:
+
+    dev-deploy:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - uses: azure/setup-kubectl@v4
+        with:
+           version: 'v1.28.1' # default is latest stable
+      - uses: azure/k8s-set-context@v4
+        with:
+           method: kubeconfig
+           kubeconfig: ${{ secrets.KUBECONFIG }}
+      - name: check kube connectivity
+        run: kubectl version -o yaml
+      
     code-coverage:
         name: Code coverage
         runs-on: ubuntu-latest
